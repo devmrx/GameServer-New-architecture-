@@ -1,0 +1,90 @@
+﻿<Page x:Class="KursWpf.PageGames"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KursWpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="668.242" d:DesignWidth="800"
+      Title="PageGames">
+
+    <Page.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="{Binding Path=ImgGame}" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="{Binding Path=ShortName}" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="10,0,5,0" Padding="0"/>
+                <Label Content="{Binding Path=CountGamersF}" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+
+    <Grid Background="#FF282B3A">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="ИГРЫ УСТАНОВЛЕННЫЕ НА СЕРВЕРЕ" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414"/>
+        <ItemsControl x:Name="GamesList" ItemTemplate="{StaticResource listTemplate}" 
+               
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,38,0,0" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+            </ItemsControl.Resources>
+        </ItemsControl>
+
+
+
+
+
+
+
+
+
+        <!--
+        <WrapPanel Margin="0,33,0,0">
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/PUBG.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="Playerunknown's..." Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="162 игрока онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/Dota2.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="Dota 2" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="287 игроков онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/CounterStrikeGO.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="Counter-Strike: Gl..." Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="156 игроков онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/World of Warships.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="World of Warships" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="91 игрок онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/Overwatch.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="Overwatch" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="148 игроков онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+            <StackPanel Height="273" HorizontalAlignment="Left" Width="155" Margin="25,25,0,0" Background="#FF22273E" Cursor="Hand">
+                <Image Height="230" Source="Image/Chess.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="155"/>
+                <Label Content="Chess" Foreground="#FFDECFCF" Height="22" FontSize="16" Margin="0" Padding="10,0,5,0"/>
+                <Label Content="32 игрока онлайн" Foreground="#FFD4ACAC" Padding="7,0" FontSize="11"/>
+            </StackPanel>
+
+
+        </WrapPanel>
+-->
+
+
+    </Grid>
+</Page>

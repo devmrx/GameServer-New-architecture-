@@ -1,0 +1,45 @@
+﻿<Page x:Class="KursWpf.PageStatus"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KursWpf"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="643" d:DesignWidth="800"
+      Title="PageStatus">
+
+    <Grid Background="#FF282B3A">
+        <Label Content="СТАТУС СЕРВЕРА" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414"/>
+
+        <lvc:CartesianChart Series="{Binding LastHourSeries}" Margin="36,102,0,0" Height="253" VerticalAlignment="Top" HorizontalAlignment="Left" Width="419" />
+
+
+        <Button Content="Запустить" Style="{StaticResource ButtonStyle}" Margin="21,583,0,0"  Click="ButtonStart_Click"  />
+        <Button Content="Остановить" Style="{StaticResource ButtonStyle}" Margin="172,583,0,0" Click="ButtonStop_Click" />
+        <Button Content="Перезагрузить" Style="{StaticResource ButtonStyle}" Margin="322,583,0,0" />
+        <Label Content="Память (ОЗУ)" HorizontalAlignment="Left" Margin="62,66,0,0" VerticalAlignment="Top" Foreground="#FFF9F5F5" FontSize="18"/>
+        <Label Content="Количество игроков на сервере: 341" HorizontalAlignment="Left" Margin="50,385,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="Количество игровых сессий в текущий момент: 124" HorizontalAlignment="Left" Margin="50,443,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="Количество установленных игр на сервере: 6" HorizontalAlignment="Left" Margin="50,414,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="IP-адрес сервера: 198.211.105.98" HorizontalAlignment="Left" Margin="50,356,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+
+        <lvc:PieChart LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="481,102,0,0" Foreground="#FFFFF8F8" HorizontalAlignment="Left" Width="290" Height="293" VerticalAlignment="Top">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="WOW" Values="3" DataLabels="True"
+                               LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Dota 2" Values="5" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="CSGO" Values="4" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Overwatch" Values="3" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Chess" Values="1" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="PUBG" Values="6" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
+        <Label Content="Распределение игроков по играм" HorizontalAlignment="Left" Margin="473,64,0,0" VerticalAlignment="Top" Foreground="#FFF9F5F5" FontSize="18"/>
+    </Grid>
+</Page>

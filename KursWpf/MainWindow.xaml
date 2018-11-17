@@ -1,0 +1,39 @@
+﻿<Window x:Class="KursWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="757.061" Width="1001.81" Background="#282B3A" Foreground="Blue" MinWidth="800" Closed="Window_Closed" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel LastChildFill="False" Background="#2E3144" HorizontalAlignment="Left" Width="216" Margin="0,74,0,0"/>
+        <DockPanel Background="#1F2333" LastChildFill="True" Height="74" VerticalAlignment="Top">
+            <Label Content="Game Server" Height="74" VerticalAlignment="Center" Width="215" HorizontalAlignment="Left" Foreground="#FFD1C3C3" Padding="37,19,5,0" FontFamily="Montresor" FontSize="30" ScrollViewer.CanContentScroll="True"/>
+            <StackPanel Height="74" VerticalAlignment="Top" HorizontalAlignment="Right" Width="181" Orientation="Horizontal" >
+                <Image Source="Image/mes_icon.PNG" HorizontalAlignment="Right" Width="31" Margin="0,22,13,0" Height="42" VerticalAlignment="Top" OpacityMask="Black"/>
+                <Image Source="Image/icon.png" HorizontalAlignment="Right" Width="48" Margin="0,14,0,0" Height="46" VerticalAlignment="Top"/>
+                <Label Content="Admin" HorizontalAlignment="Right" Width="90" Height="74" Foreground="#FFF0E5E5" FontSize="16" Padding="16,25,5,5"/>
+
+            </StackPanel>
+        </DockPanel>
+        <Button Content="Статус" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18" BorderThickness="0,1,0,0" FontFamily="Bahnschrift Light" BorderBrush="#FF2E3144" Style="{StaticResource MenuButtonStyle}" Click="BtnClickStatusPage"  />
+        <Button Content="Игры" Name="Btn_Games" BorderThickness="0,1,0,0" BorderBrush="#FF494D62" HorizontalAlignment="Left" Margin="0,127,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18"  FontFamily="Bahnschrift Light" Style="{StaticResource MenuButtonStyle}"  Click="BtnClickGamesPage" />
+        <Button Content="Пользователи" Name="Btn_Users" BorderThickness="0,1,0,0" BorderBrush="#FF494D62" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18"  FontFamily="Bahnschrift Light" Style="{StaticResource MenuButtonStyle}"  Click="Button_Click" />
+        <Button Content="Настройки" Margin="0,233,0,0" BorderThickness="0,1,0,0" BorderBrush="#FF494D62" VerticalAlignment="Top" Height="53" Foreground="#FFA8AECA" FontSize="18"  FontFamily="Bahnschrift Light" Style="{StaticResource MenuButtonStyle}"  HorizontalAlignment="Left" Width="216" Click="Button_Click_1" />
+        <Button Content="О сервере" HorizontalAlignment="Left" BorderThickness="0,1,0,0" BorderBrush="#FF494D62" Margin="0,286,0,0" VerticalAlignment="Top" Width="216" Height="53" Foreground="#FFA8AECA" FontSize="18"  FontFamily="Bahnschrift Light" Style="{StaticResource MenuButtonStyle}"  />
+        <Frame x:Name="Main" RenderTransformOrigin="0.5,0.5" Margin="216,74,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden">
+            <Frame.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.093"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.451"/>
+                </TransformGroup>
+            </Frame.RenderTransform>
+        </Frame>
+    </Grid>
+</Window>

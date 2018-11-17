@@ -1,0 +1,16 @@
+﻿<Window x:Class="KursWpf.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursWpf"
+        mc:Ignorable="d"
+        Title="DialogWindow" Height="203.722" Width="386.704" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#FF282B3A">
+
+        <Button IsDefault="True" Click="Accept_Click" Style="{StaticResource ButtonStyle}" Height="38" Margin="50,0,0,24" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom">Да</Button>
+        <Button IsCancel="True" Style="{StaticResource ButtonStyle}" Height="38" VerticalAlignment="Bottom" Margin="0,0,50,24" HorizontalAlignment="Right" Width="103">Нет</Button>
+        <TextBlock Name="QuestionText" Margin="18,30,22,0" Foreground="#FFFFF6F6" FontSize="16" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="76" TextAlignment="Center" />
+
+    </Grid>
+</Window>
