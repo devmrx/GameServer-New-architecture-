@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using GameServerData;
+using GameServerData.Model;
 using GameServerCore.MLogic.Games;
 
 
@@ -16,6 +19,7 @@ namespace GameServerCore.MLogic
         public string HostName { get; private set; }
         public bool ServerWork { get; set; } = false;
 
+        public IRepository<User> connectionDb;
         public List<GameServer> Games { get; set; }
         public List<Account> Accounts { get; set; }
 
@@ -54,19 +58,18 @@ namespace GameServerCore.MLogic
 
         }
 
-        public List<GameServer> GetAllGames()
-        {
-            return Games;
-        }
-
-        public List<Account> GetAllAccounts()
-        {
-            return Accounts;
-        }
+        public List<GameServer> GetAllGames() => Games;
+        public List<Account> GetAllAccounts() => Accounts;
 
         private void SelectActiveAccounts()
         {
             SaveLog("Добавление игроков со статусом онлайн в очередь");
+
+            if (Accounts == null)
+            {
+                SaveLog("Ошибка! колекция игроков пуста!");
+                return;
+            }
 
             foreach (Gamer account in Accounts)
             {
@@ -118,33 +121,41 @@ namespace GameServerCore.MLogic
             // DB
             SaveLog("Загрузка пользователей");
 
-            Accounts = new List<Account>
-            {
-                new Gamer(0, "Milena", ServerEmulator.GetRandomPassHash()),
-                new Gamer(1, "Dima", ServerEmulator.GetRandomPassHash()),
-                new Gamer(2, "darkness", ServerEmulator.GetRandomPassHash()),
-                new Gamer(3, "Viktor", ServerEmulator.GetRandomPassHash()),
-                new Gamer(4, "IronMan", ServerEmulator.GetRandomPassHash()),
-                new Gamer(5, "Rabbit", ServerEmulator.GetRandomPassHash()),
-                new Gamer(6, "Samurai", ServerEmulator.GetRandomPassHash()),
-                new Gamer(7, "Fox", ServerEmulator.GetRandomPassHash()),
-                new Gamer(8, "Dog12", ServerEmulator.GetRandomPassHash()),
-                new Gamer(9, "Stark", ServerEmulator.GetRandomPassHash()),
-                new Gamer(10, "Antoni", ServerEmulator.GetRandomPassHash()),
-                new Gamer(11, "Halk", ServerEmulator.GetRandomPassHash()),
-                new Gamer(12, "Marshmallow", ServerEmulator.GetRandomPassHash()),
-                new Gamer(13, "Nagibator228", ServerEmulator.GetRandomPassHash()),
-                new Gamer(14, "volk", ServerEmulator.GetRandomPassHash()),
-                new Gamer(15, "zoro", ServerEmulator.GetRandomPassHash()),
-                new Gamer(16, "stalker", ServerEmulator.GetRandomPassHash()),
-                new Gamer(17, "Rock123", ServerEmulator.GetRandomPassHash()),
-                new Gamer(18, "Linda", ServerEmulator.GetRandomPassHash()),
-                new Gamer(19, "Sniper", ServerEmulator.GetRandomPassHash()),
-                new Gamer(20, "Viper", ServerEmulator.GetRandomPassHash()),
-                new Gamer(21, "mistic", ServerEmulator.GetRandomPassHash()),
-            };
+            connectionDb = new UserDAL();
+            connectionDb.OpenConnection();
 
-            
+
+            Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
+
+            Accounts = Mapper.Map<List<User>, List<Gamer>>(connectionDb.GetAllList()).Cast<Account>().ToList();
+
+            //Accounts = new List<Account>
+            //{
+            //    new Gamer(0, "Milena", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(1, "Dima", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(2, "darkness", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(3, "Viktor", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(4, "IronMan", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(5, "Rabbit", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(6, "Samurai", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(7, "Fox", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(8, "Dog12", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(9, "Stark", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(10, "Antoni", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(11, "Halk", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(12, "Marshmallow", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(13, "Nagibator228", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(14, "volk", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(15, "zoro", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(16, "stalker", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(17, "Rock123", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(18, "Linda", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(19, "Sniper", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(20, "Viper", ServerEmulator.GetRandomPassHash()),
+            //    new Gamer(21, "mistic", ServerEmulator.GetRandomPassHash()),
+            //};
+
+
         }
 
         
@@ -180,7 +191,7 @@ namespace GameServerCore.MLogic
             }
         }
 
-        public void StartGame()
+        private void StartGame()
         {
             foreach (var game in Games)
             {
@@ -223,7 +234,7 @@ namespace GameServerCore.MLogic
 
         // TODO: Доработать метоы сериализации
 
-        public void SerializeSessionsGames()
+        private void SerializeSessionsGames()
         {
             SaveLog("Сохранение сессии");
 
@@ -238,7 +249,7 @@ namespace GameServerCore.MLogic
 
         }
 
-        public void DeserializeSessionsGames()
+        private void DeserializeSessionsGames()
         {
             SaveLog("Востановление сессии");
 

@@ -18,11 +18,12 @@ namespace GameServerCore.MLogic {
         public Account() {
         }
 
-        public Account(int id, string login, string passwordHash)
+        public Account(int id, string login, string passwordHash, string email)
         {
             Id = id;
             Login = login;
             PasswordHash = passwordHash;
+            Email = email;
         }
 
         public virtual void Play()

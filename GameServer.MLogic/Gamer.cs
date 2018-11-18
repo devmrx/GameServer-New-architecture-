@@ -12,7 +12,7 @@ namespace GameServerCore.MLogic {
         public Status GamerStatus { get; set; }
         //public List<GameServer> Games { get; set; }
 
-        public Gamer(int id, string login, string passwordHash) : base(id, login, passwordHash) {
+        public Gamer(int id, string login, string passwordHash, string email) : base(id, login, passwordHash, email) {
             GamerStatus = Status.Offline;
         }
 

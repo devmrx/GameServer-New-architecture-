@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6ACAC04E-4D10-49C9-8D61-BC068B940870}</ProjectGuid>
+    <ProjectGuid>{5AFD6AFD-B83A-4B90-91A8-16534BC13926}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameServerCore.MLogic</RootNamespace>
-    <AssemblyName>GameServer.MLogic</AssemblyName>
+    <RootNamespace>GameServerData</RootNamespace>
+    <AssemblyName>GameServer.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,14 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,31 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="Gamer.cs" />
-    <Compile Include="Games\Chess.cs" />
-    <Compile Include="Games\CSGO.cs" />
-    <Compile Include="Games\Dota2.cs" />
-    <Compile Include="Games\GameServer.cs" />
-    <Compile Include="Games\GameSession.cs" />
-    <Compile Include="Games\Overwatch.cs" />
-    <Compile Include="Games\PUBG.cs" />
-    <Compile Include="Games\WOW.cs" />
-    <Compile Include="IServer.cs" />
-    <Compile Include="LogWriter.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server.cs" />
-    <Compile Include="ServerConfig.cs" />
-    <Compile Include="ServerEmulator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameServer.Data\GameServerData.csproj">
-      <Project>{5afd6afd-b83a-4b90-91a8-16534bc13926}</Project>
-      <Name>GameServerData</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
