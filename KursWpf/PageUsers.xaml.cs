@@ -36,7 +36,14 @@ namespace KursWpf
             accounts = new ObservableCollection<Account>(accountsList);  // need?
             //AccountList.ItemsSource = accounts;
             AccountList.ItemsSource = accounts;
-            //MessageBox.Show(_server.Status());
+
+            //MessageBox.Show(((Server)_server).Port);
+        }
+
+        private void Banned_Click(object sender, RoutedEventArgs e)
+        {
+            _server.BannedUser((int)((Button)sender).DataContext); // возврат игрока из метода
+            MessageBox.Show("Игрок забанен");
         }
     }
 }

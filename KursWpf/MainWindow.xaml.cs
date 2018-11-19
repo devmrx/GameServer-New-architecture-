@@ -60,7 +60,7 @@ namespace KursWpf {
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-            Main.Content = new PageSettings();
+            Main.Content = new PageSettings(_server);
         }
 
         private void Window_Closed(object sender, EventArgs e) {

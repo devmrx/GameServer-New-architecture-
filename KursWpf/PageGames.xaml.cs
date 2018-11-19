@@ -29,5 +29,9 @@ namespace KursWpf {
 
         }
 
+        private void WrapPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
+        }
     }
 }

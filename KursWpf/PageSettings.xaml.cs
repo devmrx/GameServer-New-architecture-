@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GameServerCore.MLogic;
+using GameServerCore.MLogic.Games;
 
 namespace KursWpf
 {
@@ -20,9 +22,25 @@ namespace KursWpf
     /// </summary>
     public partial class PageSettings : Page
     {
-        public PageSettings()
+        private IServer<GameServer, Account> _server;
+
+        public PageSettings(IServer<GameServer, Account> server)
         {
             InitializeComponent();
+            _server = server;
+
+            LogWriteTriger.IsChecked = server.LogWriterOnOff;
         }
+
+        private void LogWriteTriger_OnClick(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(LogWriteTriger.IsChecked.ToString());
+            _server.LogWriterOnOff = LogWriteTriger.IsChecked ?? false;
+
+        }
+
+        
+
+        
     }
 }

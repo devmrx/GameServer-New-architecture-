@@ -18,9 +18,8 @@ namespace GameServerCore.MLogic {
 
         public override void Play()
         {
-
-            GamerStatus = Status.Playing;
             //
+            GamerStatus = Status.Playing;
         }
     }
 

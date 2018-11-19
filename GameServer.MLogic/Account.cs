@@ -13,7 +13,7 @@ namespace GameServerCore.MLogic {
         private string PasswordHash { get; set; }
         private string Email { get; set; }
 
-        public bool IsBanned { get; set; } = false;
+        public bool IsBanned { get; set; }
 
         public Account() {
         }

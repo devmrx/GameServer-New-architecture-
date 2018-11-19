@@ -13,27 +13,22 @@ using GameServerCore.MLogic.Games;
 
 namespace GameServerCore.MLogic
 {
-    public class Server : IServer<GameServer, Account>
+    public class Server : IServer<GameServer, Account>, IDisposable
     {
         public string Ip { get; private set; }
+        public string Port { get; private set; }
         public string HostName { get; private set; }
         public bool ServerWork { get; set; } = false;
 
         public IRepository<User> connectionDb;
-        public List<GameServer> Games { get; set; }
-        public List<Account> Accounts { get; set; }
+        private List<GameServer> Games { get; set; }
+        private List<Account> Accounts { get; set; }
 
         private Queue<Account> QueueActiveAccount;
 
-        //public delegate void PrintWorkProcess(string operation);
         private Action<string> WriteLog;
         public Func<string, bool> QuestionOutput;
 
-
-        //public void SetWorkerM(PrintWorkProcess worker) 
-        //{
-        //    WriteLog += worker;
-        //}
 
         public void SetMethodLog(Action<string> method) {
             WriteLog += method;
@@ -46,8 +41,13 @@ namespace GameServerCore.MLogic
         public Server() 
         {
             Ip = ServerConfig.Ip;
+            Port = ServerConfig.Port;
             QueueActiveAccount = new Queue<Account>();
+            Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
         }
+
+        public List<GameServer> GetAllGames() => Games;
+        public List<Account> GetAllAccounts() => Accounts;
 
         public void SaveLog(string action)
         {
@@ -55,11 +55,14 @@ namespace GameServerCore.MLogic
             {
                 WriteLog(action);
             }
-
         }
 
-        public List<GameServer> GetAllGames() => Games;
-        public List<Account> GetAllAccounts() => Accounts;
+        public bool LogWriterOnOff
+        {
+            set => ServerConfig.LogActivate = value;
+            get => ServerConfig.LogActivate;
+        }
+
 
         private void SelectActiveAccounts()
         {
@@ -111,22 +114,17 @@ namespace GameServerCore.MLogic
                 new PUBG(),
                 new Dota2(),
                 new Overwatch()
-            };
-            //Games.Sort();
-
-          
+            };     
         }
 
         private void LoadAccounts() {
             // DB
-            SaveLog("Загрузка пользователей");
+            SaveLog("Подключение к базе данных");
 
             connectionDb = new UserDAL();
             connectionDb.OpenConnection();
-
-
-            Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
-
+           
+            SaveLog("Загрузка пользователей");
             Accounts = Mapper.Map<List<User>, List<Gamer>>(connectionDb.GetAllList()).Cast<Account>().ToList();
 
             //Accounts = new List<Account>
@@ -216,22 +214,12 @@ namespace GameServerCore.MLogic
                 File.Delete("sessions.dat");
             }
 
+            Dispose();
+
             ServerWork = false;
         }
 
-       
-
-        //public void GetListGames() {
-        //    Console.WriteLine();
-        //    Console.WriteLine("Игры установленные на сервере:");
-        //    foreach (var game in Games) {
-        //        Console.WriteLine(game.Name);
-        //    }
-
-        //    Console.WriteLine();
-        //}
-
-
+      
         // TODO: Доработать метоы сериализации
 
         private void SerializeSessionsGames()
@@ -244,7 +232,7 @@ namespace GameServerCore.MLogic
             using (FileStream fs = new FileStream("sessions.dat", FileMode.OpenOrCreate)) {
                 formatter.Serialize(fs, Games);
 
-                //Console.WriteLine("Объект сериализован");
+                //Debug.WriteLine("Объект сериализован");
             }
 
         }
@@ -281,12 +269,17 @@ namespace GameServerCore.MLogic
                         }
                     }
                 }
-
-                //Console.WriteLine("Объект десериализован");
-
+                //Debug.WriteLine("Объект десериализован");
             }
         }
 
+        public void BannedUser(int id)
+        {
+            Account gamer = Accounts.First(s => s.Id == id);
+
+            (connectionDb as UserDAL)?.UpdateBanned(id, !gamer.IsBanned);
+            gamer.IsBanned = !gamer.IsBanned;
+        }
 
         public string Status() {
             //var gc = GC.GetTotalMemory(false);
@@ -295,5 +288,12 @@ namespace GameServerCore.MLogic
 
         }
 
+        public void Dispose()
+        {
+            Accounts = null;
+            Games = null;
+
+            connectionDb.CloseConnection();
+        }
     }
 }

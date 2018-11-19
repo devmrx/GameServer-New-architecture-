@@ -10,6 +10,7 @@
 
     <Grid Background="#FF282B3A">
         <Label Content="НАСТРОЙКИ" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="24" Foreground="#FFB8A8A8" Height="42" Width="414" />
-
+        <Label Content="Логирование на сервере" Foreground="#FFFFF6F6" FontSize="16" HorizontalAlignment="Left" Margin="32,70,0,0" VerticalAlignment="Top"/>
+        <ToggleButton Name="LogWriteTriger" Style="{StaticResource AnimatedSwitch}" Click="LogWriteTriger_OnClick" HorizontalAlignment="Left" Margin="231,76,0,0" Width="60" Height="23" VerticalAlignment="Top" />
     </Grid>
 </Page>

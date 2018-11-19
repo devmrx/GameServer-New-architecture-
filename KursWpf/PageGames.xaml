@@ -29,7 +29,7 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,38,0,0" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel />
+                    <WrapPanel  />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.Resources>

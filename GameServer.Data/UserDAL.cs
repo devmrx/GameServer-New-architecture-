@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -47,16 +48,19 @@ namespace GameServerData {
         //    }
         //}
 
-        //public void DeleteCar(int id) {
-        //    // Получить идентификатор удаляемого автомобиля, затем выполнить удаление.
-        //    string sql = string.Format("Delete from Inventory where CarID = '{0}'", id); using (SqlCommand cmd = new SqlCommand(sql, this.sqlCn)) {
-        //        try {
-        //            cmd.ExecuteNonQuery();
-        //        } catch (SqlException ex) {
-        //            Exception error = new Exception("Sorry! That car is on order!", ex); throw error;
-        //        }
-        //    }
-        //}
+        public void Delete(int id) {
+            
+            string sql = $"Delete from Users where Id = '{id}'";
+
+            using (SqlCommand cmd = new SqlCommand(sql, sqlCn)) {
+                try {
+                    cmd.ExecuteNonQuery();
+                } catch (SqlException ex) {
+                    Exception error = new Exception("Sorry! That user is not found in database!", ex);
+                    throw error;
+                }
+            }
+        }
 
         public void UpdateBanned(int id, bool banned) {
 
@@ -68,12 +72,12 @@ namespace GameServerData {
 
         public List<User> GetAllList() {
             // Здесь будут храниться записи.
-            List<User> inv = new List<User>();
+            List<User> users = new List<User>();
             // Подготовить объект команды.
             string sql = "Select * From Users";
             using (SqlCommand cmd = new SqlCommand(sql, this.sqlCn)) {
                 SqlDataReader dr = cmd.ExecuteReader(); while (dr.Read()) {
-                    inv.Add(new User {
+                    users.Add(new User {
                         Id = (int)dr["Id"],
                         Login = (string)dr["Login"],
                         Email = (string)dr["Email"],
@@ -84,27 +88,26 @@ namespace GameServerData {
                 }
                 dr.Close();
             }
-            return inv;
+            return users;
         }
 
         // Автономный уровень
-        //public DataTable GetAllInventoryAsDataTable() {
-        //    // Здесь будут храниться записи.
-        //    DataTable inv = new DataTable();
-        //    // Подготовить объект команды.
-        //    string sql = "Select * From Inventory";
-        //    using (SqlCommand cmd = new SqlCommand(sql, this.sqlCn)) {
-        //        SqlDataReader dr = cmd.ExecuteReader();
-        //        // Заполнить DataTable данными из объекта чтения и выполнить очистку.
-        //        inv.Load(dr);
-        //        dr.Close();
-        //    }
-        //    return inv;
-        //}
+        public DataTable GetAllDataTable() {
+            // Здесь будут храниться записи.
+            DataTable users = new DataTable();
+            // Подготовить объект команды.
+            string sql = "Select * From Users";
+            using (SqlCommand cmd = new SqlCommand(sql, sqlCn)) {
+                SqlDataReader dr = cmd.ExecuteReader();
+                // Заполнить DataTable данными из объекта чтения и выполнить очистку.
+                users.Load(dr);
+                dr.Close();
+            }
+            return users;
+        }
 
         public void CloseConnection() {
             sqlCn.Close();
         }
-
     }
 }

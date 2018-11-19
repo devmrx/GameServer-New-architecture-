@@ -20,7 +20,7 @@
                         <!--<Image Width="100" Height="75" Source="{Binding Path=ImagePath}" />-->
                         <TextBlock FontSize="16" Text="{Binding Path=Login}" HorizontalAlignment="Left" Foreground="#FFF9EFEF" Margin="26,17,0,0" VerticalAlignment="Top" />
                         <TextBlock FontSize="16" Text="{Binding Path=GamerStatus}" HorizontalAlignment="Left" Margin="-193,17,0,0" VerticalAlignment="Top" Foreground="#FF9E8F8F" DockPanel.Dock="Right" />
-                        <Button Content="Забанить"  VerticalAlignment="Center" Width="93" Height="28" BorderBrush="#FF494D62" Background="{x:Null}" Foreground="#FFFDFBFB" Margin="0,14,28,14" HorizontalAlignment="Right" Cursor="Hand" />
+                        <Button Content="Забанить" DataContext="{Binding Path=Id}" Click="Banned_Click" VerticalAlignment="Center" Width="93" Height="28" BorderBrush="#FF494D62" Background="{x:Null}" Foreground="#FFFDFBFB" Margin="0,14,28,14" HorizontalAlignment="Right" Cursor="Hand" />
 
                     </DockPanel>
                 </DataTemplate>
