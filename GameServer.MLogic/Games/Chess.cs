@@ -9,7 +9,9 @@ namespace GameServerCore.MLogic.Games
     [Serializable]
     class Chess : GameServer
     {
-        public Chess() {
+        public Chess()
+        {
+            Id = 0;
             Name = "Chess";
             ShortName = "Chess";
             ImgGame = "Image/Chess.jpg";

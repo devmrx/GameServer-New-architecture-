@@ -9,7 +9,9 @@ namespace GameServerCore.MLogic.Games
     [Serializable]
     class Overwatch : GameServer
     {
-        public Overwatch() {
+        public Overwatch()
+        {
+            Id = 3;
             Name = "Overwatch";
             ShortName = "Overwatch";
             ImgGame = "Image/Overwatch.jpg";

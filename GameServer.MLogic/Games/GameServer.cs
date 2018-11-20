@@ -8,6 +8,7 @@ namespace GameServerCore.MLogic.Games {
     [Serializable]
     public abstract class GameServer : IComparable<GameServer>{
 
+        public int Id { get; set; }    
         public string Name { get; set; }
         public string ImgGame { get; set; }
         //public string TypeGame { get; set; } // ENUM 

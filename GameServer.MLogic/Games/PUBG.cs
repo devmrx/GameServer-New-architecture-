@@ -9,7 +9,9 @@ namespace GameServerCore.MLogic.Games
     [Serializable]
     class PUBG : GameServer
     {
-        public PUBG() {
+        public PUBG()
+        {
+            Id = 4;
             Name = "PlayerUnknown’s Battlegrounds";
             ShortName = "Playerunknown's...";
             ImgGame = "Image/PUBG.jpg";

@@ -118,6 +118,17 @@ namespace KursWpf {
         }
 
 
+        private void SetCountGamers()
+        {
+            Chess.Values = new ChartValues<int>(new int[] { _server.GetAllGames().FirstOrDefault(g => g.Id == 0)._listGamers.Count });
+            Csgo.Values = new ChartValues<int>(new int[]{ _server.GetAllGames().FirstOrDefault(g => g.Id == 1)._listGamers.Count});
+            Dota2.Values = new ChartValues<int>(new int[] { _server.GetAllGames().FirstOrDefault(g => g.Id == 2)._listGamers.Count });
+            Overwatch.Values = new ChartValues<int>(new int[] { _server.GetAllGames().FirstOrDefault(g => g.Id == 3)._listGamers.Count });
+            Pubg.Values = new ChartValues<int>(new int[] { _server.GetAllGames().FirstOrDefault(g => g.Id == 4)._listGamers.Count });
+            Wow.Values = new ChartValues<int>(new int[] { _server.GetAllGames().FirstOrDefault(g => g.Id == 5)._listGamers.Count });
+
+        }
+
 
         protected virtual void OnPropertyChanged(string propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -137,8 +148,9 @@ namespace KursWpf {
             {
                 _server.Start();
                 _resetEvent.Set();
+                SetCountGamers();
 
-               // AllocConsole();
+                // AllocConsole();
                 //Console.WriteLine("test");
 
 

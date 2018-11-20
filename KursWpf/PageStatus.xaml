@@ -24,19 +24,19 @@
         <Label Content="Количество установленных игр на сервере: 6" HorizontalAlignment="Left" Margin="50,414,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
         <Label Content="IP-адрес сервера: 198.211.105.98" HorizontalAlignment="Left" Margin="50,356,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
 
-        <lvc:PieChart LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="481,102,0,0" Foreground="#FFFFF8F8" HorizontalAlignment="Left" Width="290" Height="293" VerticalAlignment="Top">
+        <lvc:PieChart LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Name="PieChartGamers" Margin="481,102,0,0" Foreground="#FFFFF8F8" HorizontalAlignment="Left" Width="290" Height="293" VerticalAlignment="Top">
             <lvc:PieChart.Series>
-                <lvc:PieSeries Title="WOW" Values="3" DataLabels="True"
+                <lvc:PieSeries Name="Wow" Title="WOW" Values="1" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Dota 2" Values="5" DataLabels="True" 
+                <lvc:PieSeries Name="Dota2" Title="Dota 2" Values="2" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="CSGO" Values="4" DataLabels="True" 
+                <lvc:PieSeries Name="Csgo" Title="CSGO" Values="1" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Overwatch" Values="3" DataLabels="True" 
+                <lvc:PieSeries Name="Overwatch" Title="Overwatch" Values="1" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Chess" Values="1" DataLabels="True" 
+                <lvc:PieSeries Name="Chess" Title="Chess" Values="3" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="PUBG" Values="6" DataLabels="True" 
+                <lvc:PieSeries Name="Pubg" Title="PUBG" Values="2" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
             </lvc:PieChart.Series>
         </lvc:PieChart>

@@ -10,7 +10,9 @@ namespace GameServerCore.MLogic.Games
     class CSGO : GameServer {
 
 
-        public CSGO() {
+        public CSGO()
+        {
+            Id = 1;
             Name = "Counter-Strike: Global Offensive";
             ShortName = "Counter-Strike: Gl...";
             ImgGame = "Image/CounterStrikeGO.jpg";

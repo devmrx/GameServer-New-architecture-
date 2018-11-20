@@ -41,7 +41,7 @@ namespace GameServerCore.MLogic
         public Server() 
         {
             Ip = ServerConfig.Ip;
-            Port = ServerConfig.Port;
+            //Port = ServerConfig.Port;
             QueueActiveAccount = new Queue<Account>();
             Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
         }
@@ -79,6 +79,8 @@ namespace GameServerCore.MLogic
                 if(account.GamerStatus == GameServerCore.MLogic.Status.Online)
                     QueueActiveAccount.Enqueue(account);
             }
+
+            
         }
 
 
@@ -187,6 +189,13 @@ namespace GameServerCore.MLogic
 
                 StartGame();
             }
+        }
+
+        public void SaveSettings()
+        {
+            SaveLog("Сохранение настроек сервера");
+
+            ServerConfig.SaveSettings();
         }
 
         private void StartGame()

@@ -17,6 +17,6 @@ namespace GameServerCore.MLogic {
         void SetMethodLog(Action<string> worker);
         void SetMethodQuestionOutput(Func<string, bool> method);
         void BannedUser(int id);
-        
+        void SaveSettings();
     }
 }

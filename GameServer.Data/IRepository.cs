@@ -13,6 +13,7 @@ namespace GameServerData {
         void CloseConnection();
         List<T> GetAllList();
         DataTable GetAllDataTable();
+        void Insert(T item);
         void Delete(int id);
 
     }

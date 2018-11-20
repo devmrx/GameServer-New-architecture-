@@ -37,6 +37,7 @@ namespace KursWpf
             //MessageBox.Show(LogWriteTriger.IsChecked.ToString());
             _server.LogWriterOnOff = LogWriteTriger.IsChecked ?? false;
 
+            _server.SaveSettings();
         }
 
         

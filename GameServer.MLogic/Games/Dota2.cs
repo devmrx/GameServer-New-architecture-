@@ -9,7 +9,9 @@ namespace GameServerCore.MLogic.Games
     [Serializable]
     class Dota2 : GameServer {
 
-        public Dota2() {
+        public Dota2()
+        {
+            Id = 2;
             Name = "Dota 2";
             ShortName = "Dota 2";
             ImgGame = "Image/Dota2.jpg";

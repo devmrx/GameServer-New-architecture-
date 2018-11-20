@@ -9,7 +9,9 @@ namespace GameServerCore.MLogic.Games
     [Serializable]
     class WOW : GameServer
     {
-        public WOW() {
+        public WOW()
+        {
+            Id = 5;
             Name = "World of Warships";
             ShortName = "World of Warships";
             ImgGame = "Image/World of Warships.jpg";
