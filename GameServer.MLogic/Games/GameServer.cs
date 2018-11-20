@@ -19,7 +19,7 @@ namespace GameServerCore.MLogic.Games {
         protected string Description { get; set; }
 
         public List<Account> _listGamers;
-        private List<GameSession> GameSessions;
+        public List<GameSession> GameSessions { get; private set; }
 
         protected GameServer()
         {
@@ -32,8 +32,7 @@ namespace GameServerCore.MLogic.Games {
             if (CountGamers > other.CountGamers) return -1;
             else if (CountGamers < other.CountGamers) return 1;
             else return 0;
-
-            
+    
         }
 
 

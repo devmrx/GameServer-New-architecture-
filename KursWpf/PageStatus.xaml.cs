@@ -89,6 +89,12 @@ namespace KursWpf {
                     });
                 }
             });
+
+
+            HostName.Content = String.Format((string)HostName.Content, _server.HostName);
+            Ip.Content = String.Format((string)Ip.Content, _server.Ip);
+            ServerWork.Content = $"Сервер: {(_server.ServerWork ? "включен" : "выключен")}";
+
         }
 
 
@@ -150,6 +156,18 @@ namespace KursWpf {
                 _resetEvent.Set();
                 SetCountGamers();
 
+                CountGamers.Content = String.Format((string)CountGamers.Content, _server.GetAllAccounts().Count);
+                CountGames.Content = String.Format((string)CountGames.Content, _server.GetAllGames().Count);
+
+                int countGameSessions = 0;
+
+                foreach (var game in _server.GetAllGames())
+                {
+                    countGameSessions += game.GameSessions.Count;
+                }
+                
+                CountSessions.Content = $"Количество игровых сессий в текущий момент: {countGameSessions}";
+                ServerWork.Content = $"Сервер: {(_server.ServerWork ? "включен" : "выключен")}";
                 // AllocConsole();
                 //Console.WriteLine("test");
 
@@ -167,6 +185,7 @@ namespace KursWpf {
                 _server.Stop();
 
                 _resetEvent.Reset();
+                ServerWork.Content = $"Сервер: {(_server.ServerWork ? "включен" : "выключен")}";
                 //FreeConsole();
             }
         }

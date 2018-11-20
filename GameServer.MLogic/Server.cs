@@ -15,9 +15,9 @@ namespace GameServerCore.MLogic
 {
     public class Server : IServer<GameServer, Account>, IDisposable
     {
-        public string Ip { get; private set; }
-        public string Port { get; private set; }
-        public string HostName { get; private set; }
+        public string Ip { get; set; }
+        public string Port { get; set; }
+        public string HostName { get; set; }
         public bool ServerWork { get; set; } = false;
 
         public IRepository<User> connectionDb;
@@ -41,7 +41,9 @@ namespace GameServerCore.MLogic
         public Server() 
         {
             Ip = ServerConfig.Ip;
-            //Port = ServerConfig.Port;
+            Port = ServerConfig.Port;
+            HostName = ServerConfig.HostName;
+
             QueueActiveAccount = new Queue<Account>();
             Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
         }

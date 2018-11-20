@@ -19,10 +19,10 @@
         <Button Content="Остановить" Style="{StaticResource ButtonStyle}" Margin="172,583,0,0" Click="ButtonStop_Click" />
         <Button Content="Перезагрузить" Style="{StaticResource ButtonStyle}" Margin="322,583,0,0" />
         <Label Content="Память (ОЗУ)" HorizontalAlignment="Left" Margin="62,66,0,0" VerticalAlignment="Top" Foreground="#FFF9F5F5" FontSize="18"/>
-        <Label Content="Количество игроков на сервере: 341" HorizontalAlignment="Left" Margin="50,385,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
-        <Label Content="Количество игровых сессий в текущий момент: 124" HorizontalAlignment="Left" Margin="50,443,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
-        <Label Content="Количество установленных игр на сервере: 6" HorizontalAlignment="Left" Margin="50,414,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
-        <Label Content="IP-адрес сервера: 198.211.105.98" HorizontalAlignment="Left" Margin="50,356,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="Количество игроков на сервере: {0}" Name="CountGamers" HorizontalAlignment="Left" Margin="50,452,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="Количество игровых сессий в текущий момент: {0}" Name="CountSessions" HorizontalAlignment="Left" Margin="50,510,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="Количество установленных игр на сервере: {0}" Name="CountGames"  HorizontalAlignment="Left" Margin="50,481,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label Content="IP-адрес сервера: {0}" Name="Ip" HorizontalAlignment="Left" Margin="50,423,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
 
         <lvc:PieChart LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Name="PieChartGamers" Margin="481,102,0,0" Foreground="#FFFFF8F8" HorizontalAlignment="Left" Width="290" Height="293" VerticalAlignment="Top">
             <lvc:PieChart.Series>
@@ -41,5 +41,7 @@
             </lvc:PieChart.Series>
         </lvc:PieChart>
         <Label Content="Распределение игроков по играм" HorizontalAlignment="Left" Margin="473,64,0,0" VerticalAlignment="Top" Foreground="#FFF9F5F5" FontSize="18"/>
+        <Label Name="HostName" Content="Домен сервера: {0}" HorizontalAlignment="Left" Margin="50,395,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
+        <Label x:Name="ServerWork" Content="Сервер: {0}" HorizontalAlignment="Left" Margin="50,366,0,0" VerticalAlignment="Top" Foreground="#FFFFF6F6" FontSize="14"/>
     </Grid>
 </Page>

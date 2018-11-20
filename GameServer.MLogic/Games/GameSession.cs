@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameServerCore.MLogic.Games
 {
     [Serializable]
-    class GameSession {
+    public class GameSession {
 
         public int MaxCountGamers { get; set; }
         public List<Gamer> GamersPlay; // id
