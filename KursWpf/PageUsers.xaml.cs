@@ -26,24 +26,31 @@ namespace KursWpf
         private IServer<GameServer, Account> _server;
         private ObservableCollection<Account> accounts;
 
+
         public PageUsers(IServer<GameServer, Account> server)
         {
             InitializeComponent();
             _server = server;
-            List<Account> accountsList = _server.GetAllAccounts();
-
-            if(accountsList == null) return;
-            accounts = new ObservableCollection<Account>(accountsList);  // need?
-            //AccountList.ItemsSource = accounts;
-            AccountList.ItemsSource = accounts;
+            LoadListUsers();
 
             //MessageBox.Show(((Server)_server).Port);
+        }
+
+        private void LoadListUsers()
+        {
+            List<Account> accountsList = _server.GetAllAccounts();
+
+            if (accountsList == null) return;
+            accounts = new ObservableCollection<Account>(accountsList); // need?
+            //AccountList.ItemsSource = accounts;
+            AccountList.ItemsSource = accounts;
         }
 
         private void Banned_Click(object sender, RoutedEventArgs e)
         {
             _server.BannedUser((int)((Button)sender).DataContext); // возврат игрока из метода
             MessageBox.Show("Игрок забанен");
+            LoadListUsers();
         }
     }
 }

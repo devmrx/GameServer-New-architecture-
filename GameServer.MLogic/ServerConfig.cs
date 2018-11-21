@@ -44,7 +44,7 @@ namespace GameServerCore.MLogic {
 
          private static void SetDefaultSettings()
          {
-            Ip = "198.211.105.98";
+            Ip = "192.211.105.98";
             HostName = "gameserver.com";
             LogActivate  = true;
             Port = "5432";

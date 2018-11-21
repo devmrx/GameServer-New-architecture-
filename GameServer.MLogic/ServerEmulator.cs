@@ -19,6 +19,11 @@ namespace GameServerCore.MLogic {
             foreach (var account in accounts) {
                 if (account is Gamer gamer) {
                     //gamer.GamerStatus = (Status)_rand.Next(0, 4);
+                    if (gamer.IsBanned)
+                    {
+                        gamer.GamerStatus = Status.Banned;
+                        continue;
+                    }
                     gamer.GamerStatus = (Status)_rand.Next(0, 2);
                 }
             }

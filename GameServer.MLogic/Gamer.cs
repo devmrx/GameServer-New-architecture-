@@ -21,15 +21,30 @@ namespace GameServerCore.MLogic {
             //
             GamerStatus = Status.Playing;
         }
+
+        public override void Banned()
+        {
+            if (IsBanned)
+            {
+                GamerStatus = Status.Banned;
+            }             
+            else
+            {
+                GamerStatus = Status.Online;
+            }
+        }
+
     }
 
     public enum Status : byte {
         Offline,
         Online,
         Search,
-        Playing
+        Playing,
+        Banned
     }
 
+    
    
 
 }

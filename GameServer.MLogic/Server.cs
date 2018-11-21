@@ -94,6 +94,7 @@ namespace GameServerCore.MLogic
             {
                 while (QueueActiveAccount.Count != 0 && Games.Count != 0) {
                     Account gamer = QueueActiveAccount.Dequeue();
+                    gamer.Play();
                     Games[ServerEmulator.GetRandomIndxGame(Games.Count)].AddGamer(gamer);
                 }
 
@@ -290,14 +291,11 @@ namespace GameServerCore.MLogic
 
             (connectionDb as UserDAL)?.UpdateBanned(id, !gamer.IsBanned);
             gamer.IsBanned = !gamer.IsBanned;
+            gamer.Banned();
+            
         }
 
-        public string Status() {
-            //var gc = GC.GetTotalMemory(false);
-            return (GC.GetTotalMemory(false) / (int)Math.Pow(1024, 2) + " MB");
-            //ServerWork ? "Сервер запущен" : "Сервер выключен";
-
-        }
+        
 
         public void Dispose()
         {

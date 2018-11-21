@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -77,11 +78,12 @@ namespace KursWpf {
             DataContext = this;
 
             Task.Run(() => {
-                var r = new Random();
+                //var r = new Random();
                 while (true) {
                     _resetEvent.WaitOne();
-                    Thread.Sleep(500);
-                    _trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
+                    Thread.Sleep(1000);
+                    //_trend += (r.NextDouble() > 0.3 ? 1 : -1) * r.Next(0, 5);
+                    _trend = GC.GetTotalMemory(false) / (int)Math.Pow(1024, 2);
                     Application.Current.Dispatcher.Invoke(() => {
                         LastHourSeries[0].Values.Add(new ObservableValue(_trend));
                         LastHourSeries[0].Values.RemoveAt(0);
@@ -178,7 +180,21 @@ namespace KursWpf {
             }
         }
 
-        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
+
+        private void RamCount() {
+            PerformanceCounter ram;
+            ram = new PerformanceCounter("Memory", "Available MBytes");
+            MessageBox.Show(ram.NextValue() + "MB");
+        }
+
+        //public void Status() {
+        //    //var gc = GC.GetTotalMemory(false);
+        //    MessageBox.Show(GC.GetTotalMemory(false) / (int)Math.Pow(1024, 2) + " MB");
+
+        //}
+
+        private void ButtonStop_Click(object sender, RoutedEventArgs e)
+        {
 
 
             if (_server.ServerWork) {

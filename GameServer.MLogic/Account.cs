@@ -27,8 +27,10 @@ namespace GameServerCore.MLogic {
         }
 
         public virtual void Play()
-        {
-            
+        {            
+        }
+
+        public virtual void Banned() {
         }
     }
 }

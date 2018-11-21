@@ -54,7 +54,9 @@ namespace KursWpf {
             Main.Content = new PageGames(_server);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
 
             Main.Content = new PageUsers(_server);
         }
