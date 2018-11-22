@@ -14,7 +14,7 @@ namespace GameServerData {
         private string _connectionstring = @"Data Source=DESKTOP-G4BL3RC;Initial Catalog=GameServer;Integrated Security=True";
 
 
-        public void OpenConnection() {  // param string connectionstring
+        public void OpenConnection() {  
             sqlCn = new SqlConnection {
                 ConnectionString = _connectionstring
             };
