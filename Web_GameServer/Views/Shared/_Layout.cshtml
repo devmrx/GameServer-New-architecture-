@@ -7,37 +7,44 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="/Content/style.css"/>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    
+    
+<div class="karkas">
+    <div class="header">
+        <a href="/"><img class="logo" src="/Images/logo.PNG"></a>
+        <div class="header-user">
+            <a href="#"><img class="img-event" src="/Images/event.PNG" alt=""></a>
+            <a href="#"><img class="img-user" src="/Images/icon.png"></a>
+            <a href="#" class="admin-text">Admin</a>
+        </div>
+                
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">Статус</a></li>
+            <li><a href="#">Игры</a></li>
+            <li><a href="@Url.Action( "Users", "Home")">Пользователи</a></li>
+            <li><a href="#">Настройки</a></li>
+            <li><a href="#">О сервере</a></li>
+        </ul>
+              
+    </div>
+    <div class="content">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-            </div>
+            @RenderBody()
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    
+
+</div>
+
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using GameServerCore.MLogic;
 
 namespace Web_GameServer {
     public class MvcApplication : System.Web.HttpApplication {
@@ -13,6 +14,7 @@ namespace Web_GameServer {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ServerPath.Server = new Server();
         }
     }
 }

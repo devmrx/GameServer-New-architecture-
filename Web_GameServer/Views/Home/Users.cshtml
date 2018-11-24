@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GameServerCore.MLogic.Account>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="users-page">
+    <h2>ВСЕ ИГРОКИ НА СЕРВЕРЕ</h2>
+
+@if (Model != null)
+{
+    <div class="list-users">
+
+        @foreach (GameServerCore.MLogic.Gamer user in Model)
+        {
+            <div class="list-users-item">
+                <p>@user.Login</p>
+                <div class="user-status">
+                    <p>@user.GamerStatus</p>
+                    <button>Забанить</button>
+                </div>
+            </div>
+        }
+
+        @*<div class="list-users-item">
+                    <p>Joch</p>
+                    <div class="user-status">
+                        <p>Online</p>
+                        <button>Забанить</button>
+                    </div>
+
+
+                </div>*@
+    </div>
+}
+            
+</div>

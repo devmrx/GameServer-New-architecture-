@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GameServerCore.MLogic;
+using GameServerCore.MLogic.Games;
 
 namespace Web_GameServer.Controllers {
-    public class HomeController : Controller {
+    public class HomeController : Controller
+    {
+
+   
+
+        private IServer<GameServer, Account> server = ServerPath.Server;
+
         public ActionResult Index() {
+
+            server.Start();
+
+
             return View();
         }
 
@@ -20,6 +32,14 @@ namespace Web_GameServer.Controllers {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Users() {
+
+      
+
+
+            return View(server.GetAllAccounts());
         }
     }
 }

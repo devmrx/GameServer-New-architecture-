@@ -39,13 +39,21 @@ namespace GameServerCore.MLogic
         }
 
         public Server() 
-        {
-            Ip = ServerConfig.Ip;
-            Port = ServerConfig.Port;
-            HostName = ServerConfig.HostName;
+        {        
+            //try
+            //{
+                Ip = ServerConfig.Ip;
+                Port = ServerConfig.Port;
+                HostName = ServerConfig.HostName;
 
-            QueueActiveAccount = new Queue<Account>();
-            Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
+                QueueActiveAccount = new Queue<Account>();
+               
+            //}
+            //catch (Exception ex)
+            //{
+            //    SaveLog(ex.Message);
+            //}
+           
         }
 
         public List<GameServer> GetAllGames() => Games;
@@ -128,9 +136,13 @@ namespace GameServerCore.MLogic
 
             connectionDb = new UserDAL();
             connectionDb.OpenConnection();
-           
+
+            Mapper.Initialize(cfg => cfg.CreateMap<User, Gamer>());
+
             SaveLog("Загрузка пользователей");
+            
             Accounts = Mapper.Map<List<User>, List<Gamer>>(connectionDb.GetAllList()).Cast<Account>().ToList();
+            Mapper.Reset();
 
             //Accounts = new List<Account>
             //{
