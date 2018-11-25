@@ -41,5 +41,13 @@ namespace Web_GameServer.Controllers {
 
             return View(server.GetAllAccounts());
         }
+
+        public ActionResult Games()
+        {
+
+            return View(server.GetAllGames());
+        }
+
+
     }
 }

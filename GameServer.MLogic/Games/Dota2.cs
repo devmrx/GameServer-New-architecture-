@@ -14,7 +14,7 @@ namespace GameServerCore.MLogic.Games
             Id = 2;
             Name = "Dota 2";
             ShortName = "Dota 2";
-            ImgGame = "Image/Dota2.jpg";
+            ImgGame = "Images/Dota2.jpg";
             MaxGamersSession = 10;
             CountGamers = ServerEmulator.GetRandomCountGemers();
             //CountGamersF = GetCountPlayersFormat(CountGamers);

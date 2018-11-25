@@ -146,7 +146,7 @@ button {
     margin: 0 auto;
     margin-top: 80px;
     width: 100%;
-    max-width: 1088px;
+    max-width: 1110px;
 }
 
 
@@ -184,4 +184,54 @@ button {
     margin: 15px;
     display: block;
     font-family: Arial;
+}
+
+
+
+
+.games-table {
+    position: relative;
+}
+
+
+.game {
+    width: 155px;
+    height: 275px;
+    background-color: #22273E;
+    margin: 25px 25px 0 0;
+    float: left;
+}
+
+    .game a:visited {
+        text-decoration: none;
+    }
+
+    .game a:link {
+        text-decoration: none;
+    }
+
+    .game a p {
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+
+    .game img {
+        width: 155px;
+        height: 230px;
+    }
+
+.game-title {
+    color: #DECFCF;
+    font-size: 15px;
+    padding: 0 0 0 10px;
+    line-height: 0.8;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+
+.game-count-users {
+    color: #D4ACAC;
+    font-size: 11.4px;
+    padding-left: 7px;
 }

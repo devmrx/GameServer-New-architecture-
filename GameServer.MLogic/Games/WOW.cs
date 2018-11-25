@@ -14,7 +14,7 @@ namespace GameServerCore.MLogic.Games
             Id = 5;
             Name = "World of Warships";
             ShortName = "World of Warships";
-            ImgGame = "Image/World of Warships.jpg";
+            ImgGame = "Images/World of Warships.jpg";
             MaxGamersSession = 30;
             CountGamers = ServerEmulator.GetRandomCountGemers();
             //CountGamersF = GetCountPlayersFormat(CountGamers);

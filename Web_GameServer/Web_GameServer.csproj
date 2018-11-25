@@ -165,9 +165,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Chess.jpg" />
+    <Content Include="Images\CounterStrikeGO.jpg" />
+    <Content Include="Images\Dota2.jpg" />
     <Content Include="Images\event.PNG" />
+    <Content Include="Images\Fortnite.jpg" />
     <Content Include="Images\icon.png" />
     <Content Include="Images\logo.PNG" />
+    <Content Include="Images\Overwatch.jpg" />
+    <Content Include="Images\PUBG.jpg" />
+    <Content Include="Images\World of Warships.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -200,6 +207,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Games.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

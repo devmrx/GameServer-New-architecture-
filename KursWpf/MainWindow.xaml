@@ -14,8 +14,8 @@
         <DockPanel Background="#1F2333" LastChildFill="True" Height="74" VerticalAlignment="Top">
             <Label Content="Game Server" Height="74" VerticalAlignment="Center" Width="215" HorizontalAlignment="Left" Foreground="#FFD1C3C3" Padding="37,19,5,0" FontFamily="Montresor" FontSize="30" ScrollViewer.CanContentScroll="True"/>
             <StackPanel Height="74" VerticalAlignment="Top" HorizontalAlignment="Right" Width="181" Orientation="Horizontal" >
-                <Image Source="Image/mes_icon.PNG" HorizontalAlignment="Right" Width="31" Margin="0,22,13,0" Height="42" VerticalAlignment="Top" OpacityMask="Black"/>
-                <Image Source="Image/icon.png" HorizontalAlignment="Right" Width="48" Margin="0,14,0,0" Height="46" VerticalAlignment="Top"/>
+                <Image Source="Images/mes_icon.PNG" HorizontalAlignment="Right" Width="31" Margin="0,22,13,0" Height="42" VerticalAlignment="Top" OpacityMask="Black"/>
+                <Image Source="Images/icon.png" HorizontalAlignment="Right" Width="48" Margin="0,14,0,0" Height="46" VerticalAlignment="Top"/>
                 <Label Content="Admin" HorizontalAlignment="Right" Width="90" Height="74" Foreground="#FFF0E5E5" FontSize="16" Padding="16,25,5,5"/>
 
             </StackPanel>

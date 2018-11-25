@@ -14,7 +14,7 @@ namespace GameServerCore.MLogic.Games
             Id = 4;
             Name = "PlayerUnknown’s Battlegrounds";
             ShortName = "Playerunknown's...";
-            ImgGame = "Image/PUBG.jpg";
+            ImgGame = "Images/PUBG.jpg";
             MaxGamersSession = 100;
             CountGamers = ServerEmulator.GetRandomCountGemers();
             //CountGamersF = GetCountPlayersFormat(CountGamers);

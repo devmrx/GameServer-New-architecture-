@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GameServerCore.MLogic.Games.GameServer>
+
+@{
+    ViewBag.Title = "Games";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ИГРЫ УСТАНОВЛЕННЫЕ НА СЕРВЕРЕ</h2>
+@if (Model != null)
+{
+    <div class="games-table">
+@foreach (GameServerCore.MLogic.Games.GameServer game in Model)
+{
+    <div class="game">
+        <a href="#">
+            <img src="/@game.ImgGame" alt="game">
+            <p class="game-title">@game.ShortName</p>
+            <p class="game-count-users">15 игроков онлайн</p>
+        </a>
+    </div>
+
+}
+    </div>
+}

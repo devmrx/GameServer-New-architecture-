@@ -15,7 +15,7 @@ namespace GameServerCore.MLogic.Games
             Id = 1;
             Name = "Counter-Strike: Global Offensive";
             ShortName = "Counter-Strike: Gl...";
-            ImgGame = "Image/CounterStrikeGO.jpg";
+            ImgGame = "Images/CounterStrikeGO.jpg";
             MaxGamersSession = 10;
             CountGamers = ServerEmulator.GetRandomCountGemers();
             //CountGamersF = GetCountPlayersFormat(CountGamers);

@@ -137,22 +137,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\PUBG.jpg" />
+    <Resource Include="Images\PUBG.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\CounterStrikeGO.jpg" />
-    <Resource Include="Image\Dota2.jpg" />
+    <Resource Include="Images\CounterStrikeGO.jpg" />
+    <Resource Include="Images\Dota2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Chess.jpg" />
-    <Resource Include="Image\Overwatch.jpg" />
-    <Resource Include="Image\World of Warships.jpg" />
+    <Resource Include="Images\Chess.jpg" />
+    <Resource Include="Images\Overwatch.jpg" />
+    <Resource Include="Images\World of Warships.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\icon.png" />
+    <Resource Include="Images\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\mes_icon.PNG" />
+    <Resource Include="Images\mes_icon.PNG" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameServer.MLogic\GameServer.MLogic.csproj">

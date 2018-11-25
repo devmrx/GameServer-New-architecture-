@@ -14,7 +14,7 @@ namespace GameServerCore.MLogic.Games
             Id = 3;
             Name = "Overwatch";
             ShortName = "Overwatch";
-            ImgGame = "Image/Overwatch.jpg";
+            ImgGame = "Images/Overwatch.jpg";
             MaxGamersSession = 30;
             CountGamers = ServerEmulator.GetRandomCountGemers();
             //CountGamersF = GetCountPlayersFormat(CountGamers);
