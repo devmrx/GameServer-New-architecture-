@@ -36,11 +36,17 @@ namespace Web_GameServer.Controllers {
 
         public ActionResult Users() {
 
-      
-
 
             return View(server.GetAllAccounts());
         }
+
+        //public ActionResult UpdateBan(int id)
+        //{
+        //    server.BannedUser(id);
+
+        //    return PartialView();
+        //}
+
 
         public ActionResult Games()
         {

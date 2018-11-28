@@ -66,6 +66,12 @@ namespace GameServerCore.MLogic.Games {
             int count = CountGamers;
             int lastdigit = Int32.Parse(count.ToString().Last().ToString());
 
+            if (count > 10)
+            {
+                CountGamersF = count + " игроков онлайн";
+                return;
+            }
+
             switch (lastdigit)
             {
                 case 1:

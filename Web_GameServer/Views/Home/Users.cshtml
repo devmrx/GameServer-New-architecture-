@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>ВСЕ ИГРОКИ НА СЕРВЕРЕ</h2>
+
 <div class="users-page">
-    <h2>ВСЕ ИГРОКИ НА СЕРВЕРЕ</h2>
+   
 
 @if (Model != null)
 {
     <div class="list-users">
-
         @foreach (GameServerCore.MLogic.Gamer user in Model)
         {
             <div class="list-users-item">
@@ -21,16 +22,6 @@
                 </div>
             </div>
         }
-
-        @*<div class="list-users-item">
-                    <p>Joch</p>
-                    <div class="user-status">
-                        <p>Online</p>
-                        <button>Забанить</button>
-                    </div>
-
-
-                </div>*@
     </div>
 }
             

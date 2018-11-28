@@ -40,20 +40,11 @@ namespace GameServerCore.MLogic
 
         public Server() 
         {        
-            //try
-            //{
                 Ip = ServerConfig.Ip;
                 Port = ServerConfig.Port;
                 HostName = ServerConfig.HostName;
 
-                QueueActiveAccount = new Queue<Account>();
-               
-            //}
-            //catch (Exception ex)
-            //{
-            //    SaveLog(ex.Message);
-            //}
-           
+                QueueActiveAccount = new Queue<Account>();                
         }
 
         public List<GameServer> GetAllGames() => Games;

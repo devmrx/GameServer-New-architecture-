@@ -14,7 +14,7 @@ namespace Web_GameServer {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ServerPath.Server = new Server();
+            ServerPath.RegisterServer(new Server());
         }
     }
 }
