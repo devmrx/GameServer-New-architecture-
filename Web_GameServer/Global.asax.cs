@@ -15,6 +15,7 @@ namespace Web_GameServer {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ServerPath.RegisterServer(new Server());
+            
         }
     }
 }

@@ -18,7 +18,7 @@
                 <p>@user.Login</p>
                 <div class="user-status">
                     <p>@user.GamerStatus</p>
-                    <button>Забанить</button>
+                    <a href="@Url.Action( "Users", "Home", new{id = user.Id}, null)">@(user.GamerStatus.ToString() == "Banned" ? "Разбанить" : "Забанить")</a>
                 </div>
             </div>
         }
