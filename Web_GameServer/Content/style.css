@@ -149,6 +149,37 @@ button {
     max-width: 1110px;
 }
 
+.diagram {
+    width: 100%;
+    position: relative;
+}
+
+.diagram0 {
+    
+    float: left;
+    width: 320px
+}
+
+.diagram1 {
+    
+    width: 320px
+}
+
+
+.status-content {
+    margin-top: 25px;
+}
+
+.status-info-text {
+    margin-top: 25px;
+}
+
+.status-info-text p {
+    font-family: Arial;
+    line-height: 1.4em;
+    color: #FFF6F6;
+    font-size: 14px;
+}
 
 .server-control input {
     margin: 20px 15px 0 0;
@@ -266,13 +297,7 @@ button {
     padding-left: 7px;
 }
 
-.status-content {
-    margin-top: 25px;
-}
 
-.status-info-text p {
-    font-family: Arial;
-    line-height: 1.4em;
-    color: #FFF6F6;
-    font-size: 14px;
-}
+
+
+

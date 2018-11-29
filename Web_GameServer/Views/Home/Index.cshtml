@@ -6,7 +6,16 @@
 <h2>СТАТУС СЕРВЕРА</h2>
 
 <div class="status-content">
-    <div class="diagram"></div>
+    <div class="diagram" style="width: 320px">
+        <div class="diagram0">
+
+          <canvas id="main-line-chart" width="400" height="400"></canvas>
+        </div>
+        <div class="diagram1">
+
+           <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+    </div>
     <div class="status-info-text">
         <p>Сервер: @(ViewBag.IsWork ? "включен" : "выключен")</p>
         <p>Домен сервера: @ViewBag.HostName</p>
@@ -16,7 +25,81 @@
         <p>Количество игровых сессий в текущий момент: @ViewBag.CountGameSessions</p>
     </div>
     <div class="server-control">
-        <input type='button' id="submit" value='Запустить' />
-        
+        <input type='button' id="submit" value='Запустить'/>
+
     </div>
 </div>
+
+
+
+
+<script>
+
+    var speedCanvas = document.getElementById("main-line-chart");
+
+    //Chart.defaults.global.defaultFontFamily = "Lato";
+    //Chart.defaults.global.defaultFontSize = 18;
+
+
+    var speedData = {
+        labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+        datasets: [{
+            label: "Car Speed (mph)",
+            
+            data: [0, 59, 75, 20, 20, 55, 40]
+            
+        }]
+    };
+
+    var chartOptions = {
+        legend: {
+            display: true,
+            //position: 'top',
+            labels: {
+                boxWidth: 80,
+                fontColor: 'white'
+            }
+        }
+    };
+
+    var lineChart = new Chart(speedCanvas, {
+        type: 'line',
+        data: speedData,
+        options: chartOptions
+    });
+
+    
+    //===========
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }],
+            //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+            labels: ["Chess", "CSGO", "Dota 2", "Overwatch", "PUBG", "WOW"]
+        }
+        
+        
+    });
+</script>
