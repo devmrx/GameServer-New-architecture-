@@ -6,34 +6,77 @@
 <h2>СТАТУС СЕРВЕРА</h2>
 
 <div class="status-content">
-    <div class="diagram" style="width: 320px">
+    <div class="diagram">
         <div class="diagram0">
 
-          <canvas id="main-line-chart" width="400" height="400"></canvas>
+            <canvas id="main-line-chart" width="500" height="330"></canvas>
         </div>
         <div class="diagram1">
 
-           <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="myChart" width="400" height="400"></canvas>
         </div>
     </div>
+    <div class="clr"></div>
     <div class="status-info-text">
-        <p>Сервер: @(ViewBag.IsWork ? "включен" : "выключен")</p>
+        <p id="serv-work">Сервер: @(ViewBag.IsWork ? "включен" : "выключен")</p>
         <p>Домен сервера: @ViewBag.HostName</p>
         <p>IP-адрес сервера: @ViewBag.IP</p>
-        <p>Количество игроков на сервере: @ViewBag.CountGamers</p>
-        <p>Количество установленных игр на сервере: @ViewBag.CountGames</p>
-        <p>Количество игровых сессий в текущий момент: @ViewBag.CountGameSessions</p>
+        <p id="count-gamers">Количество игроков на сервере: @ViewBag.CountGamers</p>
+        <p id="count-games">Количество установленных игр на сервере: @ViewBag.CountGames</p>
+        <p id="count-sessions">Количество игровых сессий в текущий момент: @ViewBag.CountGameSessions</p>
     </div>
     <div class="server-control">
-        <input type='button' id="submit" value='Запустить'/>
 
+        <a data-ajax="true" data-ajax-success="OnSuccessStart" href="/Home/JsonStartServer">Запустить</a>
+        <input type='button' id="submit" value="Перезагрузить" />
+        <a data-ajax="true" data-ajax-success="OnSuccessStop" href="/Home/JsonStopServer">Остановить</a>
+       
+       
     </div>
 </div>
 
 
-
-
 <script>
+
+    var rsp = [12, 19, 3, 5, 2, 3];
+
+    function OnSuccessStart(data) {
+
+        $('#serv-work').empty().append(data.IsWork);
+
+        $('#count-gamers').empty().append(data.CountGamers);
+        $('#count-games').empty().append(data.CountGames);
+        $('#count-sessions').empty().append(data.CountGameSessions);
+
+
+        rsp = [
+            data.raspr[0], data.raspr[1], data.raspr[2], data.raspr[3], data.raspr[4], data.raspr[5]
+        ];
+
+        dataChart.data.datasets.data = rsp;
+
+        var myChart = new Chart(ctx, dataChart);
+
+        
+
+        var lineChart = new Chart(speedCanvas, {
+            type: 'line',
+            data: speedData,
+            options: chartOptions
+        });
+
+
+    }
+
+
+    function OnSuccessStop(data) {
+
+        $('#serv-work').empty().append(data.IsWork);
+
+        //$('#count-gamers').empty().append(data.CountGamers);
+    }
+
+
 
     var speedCanvas = document.getElementById("main-line-chart");
 
@@ -44,9 +87,15 @@
     var speedData = {
         labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
         datasets: [{
-            label: "Car Speed (mph)",
+            label: "Memory (Mb)",
             
-            data: [0, 59, 75, 20, 20, 55, 40]
+            data: [0, 59, 75, 20, 20, 55, 40],
+
+            backgroundColor: [
+                
+                'rgba(54, 162, 235, 0.3)'
+                
+            ]
             
         }]
     };
@@ -71,13 +120,16 @@
     
     //===========
     var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
+
+   
+
+    var dataChart = {
         type: 'pie',
         data: {
-            
+
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: rsp,
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -99,7 +151,9 @@
             //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
             labels: ["Chess", "CSGO", "Dota 2", "Overwatch", "PUBG", "WOW"]
         }
-        
-        
-    });
+
+
+    }
+
+    var myChart = new Chart(ctx, dataChart);
 </script>

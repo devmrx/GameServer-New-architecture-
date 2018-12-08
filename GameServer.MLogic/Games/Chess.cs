@@ -17,7 +17,7 @@ namespace GameServerCore.MLogic.Games
             ImgGame = "Images/Chess.jpg";
             MaxGamersSession = 2;
             CountGamers = ServerEmulator.GetRandomCountGemers();
-            //CountGamersF = GetCountPlayersFormat(CountGamers);
+
         }
 
         private void CreateSession() {

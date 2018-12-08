@@ -14,21 +14,25 @@ namespace Web_GameServer.Controllers {
 
         private IServer<GameServer, Account> server = ServerPath.Server;
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
 
-            server.Start();
+            //server.Start();
 
             ViewBag.IsWork = server.ServerWork;
             ViewBag.HostName = server.HostName;
             ViewBag.IP = server.Ip;
 
-            ViewBag.CountGamers = server.GetAllAccounts().Count;
-            ViewBag.CountGames = server.GetAllGames().Count;
+            ViewBag.CountGamers = server.GetAllAccounts()?.Count;
+            ViewBag.CountGames = server.GetAllGames()?.Count;
 
             int countGameSessions = 0;
 
-            foreach (var game in server.GetAllGames()) {
-                countGameSessions += game.GameSessions.Count;
+            if (server.GetAllGames() != null)
+            {
+                foreach (var game in server.GetAllGames()) {
+                    countGameSessions += game.GameSessions.Count;
+                }
             }
 
             ViewBag.CountGameSessions = countGameSessions;
@@ -36,12 +40,58 @@ namespace Web_GameServer.Controllers {
             return View();
         }
 
-        //public ActionResult ServerStart() {
+
+        public JsonResult JsonStartServer() {
+            //var jsondata = db.Books.Where(a => a.Author.Contains(name)).ToList<Book>();
+
+            server.Start();
+
+            string IsWork = "Сервер: " + (server.ServerWork ? "включен" : "выключен");
+
+            string CountGamers = "Количество игроков на сервере: " + server.GetAllAccounts().Count.ToString();
+            string CountGames = "Количество установленных игр на сервере: " + server.GetAllGames().Count.ToString();
+
+            int countSessions = 0;
+
+            List<int> raspr = SetCountGamers();
+            foreach (var game in server.GetAllGames()) {
+                countSessions += game.GameSessions.Count;
+            }
+
+            string CountGameSessions = "Количество игровых сессий в текущий момент: " + countSessions;
+
+
+            return Json(new { IsWork, CountGamers, CountGames, CountGameSessions, raspr }, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<int> SetCountGamers() {
+            List<int> raspr = new List<int>();
+
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 0)._listGamers.Count);   // Chess
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 1)._listGamers.Count);  // Csgo
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 2)._listGamers.Count); // Dota2
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 3)._listGamers.Count);  // Overwatch
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 4)._listGamers.Count);  //  Pubg
+            raspr.Add(server.GetAllGames().FirstOrDefault(g => g.Id == 5)._listGamers.Count);  // Wow
+
+            return raspr;
+        }
+
+        public JsonResult JsonStopServer()
+        {
+            server.Stop();
+
+            string IsWork = "Сервер: " + (server.ServerWork ? "включен" : "выключен");
+
+            return Json(new { IsWork }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Feed() {
             
 
 
-        //    return PartialView();
-        //}
+            return PartialView(server.GetAllAccounts().FirstOrDefault());
+        }
 
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
@@ -49,8 +99,8 @@ namespace Web_GameServer.Controllers {
             return View();
         }
 
-        public ActionResult Contact() {
-            ViewBag.Message = "Your contact page.";
+        public ActionResult Setting() {
+            ViewBag.Message = "Setting";
 
             return View();
         }

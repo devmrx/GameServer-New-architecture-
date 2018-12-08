@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Setting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>НАСТРОЙКИ</h2>
+
+<div class="setting-main">
+    <div class="log-trigger">
+        <label for="">Логирование на сервере</label>
+        <div class="tgSwitch">
+            <div class="slider"></div>
+            <input type="checkbox" checked>
+        </div>
+    </div>
+
+    <!--<div id="idf">
+            @*@Ajax.ActionLink("Gamer", "JsonStartServer",
+            new AjaxOptions{ OnSuccess= "OnSuccess" })*@
+
+            <a data-ajax="true" data-ajax-success="OnSuccess" href="/Home/JsonStartServer">Gamer</a>
+        </div>
+    -->
+</div>
+
+<script type="text/javascript">
+    function OnSuccess() {
+        // <a data-ajax="true" data-ajax-success="OnSuccess" href="/Home/JsonStartServer">Gamer</a>
+        //var results = $('#idf'); // получаем нужный элемент
+        //results.empty(); //очищаем элемент
+        alert("Server start");
+        //for (var i = 0; i < data.length; i++) {
+        //    results.append('<li>' + data[i].Name + '</li>'); // добавляем данные в список
+        //}
+    }
+</script>
+
+
+
+<script>
+    $('document').ready(function () {
+        $('.tgSwitch').each(function () {
+            if ($(this).find('input').attr('checked')) {
+                $(this).addClass('active');
+                $(this).find('.slider').css({ "-webkit-transform": "translateX(23px)" });
+            }
+        });
+    });
+
+
+    $('.tgSwitch').click(function () {
+        if ($(this).find('input').attr('checked')) {
+            $(this).removeClass('active');
+            $(this).find('input').attr('checked', false);
+            $(this).find('.slider').css({ "-webkit-transform": "translateX(0px)" });
+        } else {
+            $(this).addClass('active');
+            $(this).find('input').attr('checked', true);
+            $(this).find('.slider').css({ "-webkit-transform": "translateX(23px)" });
+        }
+    });
+</script>

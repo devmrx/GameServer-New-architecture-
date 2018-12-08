@@ -150,21 +150,28 @@ button {
 }
 
 .diagram {
-    width: 100%;
-    position: relative;
+    /*width: 100%;
+    position: relative;*/
 }
 
 .diagram0 {
-    
+    display: block;
     float: left;
-    width: 320px
+    width: 500px;
+    height: 330px;
+    
 }
 
 .diagram1 {
-    
-    width: 320px
+    display: block;
+    float: left;
+    width: 320px;
+    margin: 0 0 0 60px;
 }
 
+.clr {
+    clear: both;
+}
 
 .status-content {
     margin-top: 25px;
@@ -182,16 +189,33 @@ button {
 }
 
 .server-control input {
-    margin: 20px 15px 0 0;
+    margin: 20px 22px 0 0;
+    padding: 0 15px;
     display: block;
     font-family: Arial;
     background-color: #5936AD;
     border: none;
-    width: 131px;
+    min-width: 131px;
     height: 38px;
     color: #FDFBFB;
     font-size: 18px;
     float: left;
+}
+
+.server-control a {
+    margin: 20px 22px 0 0;
+    padding: 9px 0px 0 0px;
+    display: block;
+    font-family: Arial;
+    background-color: #5936AD;
+    border: none;
+    min-width: 131px;
+    height: 38px;
+    color: #FDFBFB;
+    font-size: 18px;
+    float: left;
+    text-align: center;
+    text-decoration: none;
 }
 
 
@@ -199,6 +223,10 @@ button {
         background-color: #512fa1;
     }
 
+.server-control a:hover {
+    background-color: #512fa1;
+    text-decoration: none;
+}
 
 
 .users-page {
@@ -297,7 +325,44 @@ button {
     padding-left: 7px;
 }
 
+.log-trigger {
+    margin-top: 25px;
+}
 
+    .log-trigger label {
+        font-size: 20px;
+        font-family: Arial;
+        display: block;
+        float: left;
+        color: #F9EFEF;
+    }
 
+.tgSwitch {
+    margin: -2px 0 0 40px;
+    height: 27px;
+    width: 50px;
+    background: #d8d9db;
+    padding: 1px;
+    border-radius: 20px;
+    transition: .4s;
+    cursor: pointer;
+    display: block;
+    float: left;
+}
 
+.tgSwitch.active {
+    background: #4bd865;
+}
+
+.tgSwitch > .slider {
+    background: #FFF;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    transition: .4s;
+}
+
+.tgSwitch > input {
+    display: none;
+}
 
