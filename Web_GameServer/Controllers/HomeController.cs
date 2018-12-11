@@ -102,7 +102,7 @@ namespace Web_GameServer.Controllers {
         public ActionResult Setting() {
             ViewBag.Message = "Setting";
 
-            return View();
+            return PartialView();
         }
 
         //public ActionResult Users() {
@@ -116,11 +116,10 @@ namespace Web_GameServer.Controllers {
 
             if (id != null)
             {
-                server.BannedUser((int)id);
-                
+                server.BannedUser((int)id);        
             }
             
-            return View(server.GetAllAccounts());
+            return PartialView(server.GetAllAccounts());
         }
 
         //public ActionResult UpdateBan(int id)
@@ -134,9 +133,13 @@ namespace Web_GameServer.Controllers {
         public ActionResult Games()
         {
 
-            return View(server.GetAllGames());
+            return PartialView(server.GetAllGames());
         }
 
+        //public ActionResult BestBook() {
+        //    Book book = db.Books.First();
+        //    return PartialView(book);
+        //}
 
     }
 }

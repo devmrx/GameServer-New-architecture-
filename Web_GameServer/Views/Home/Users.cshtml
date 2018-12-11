@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GameServerCore.MLogic.Account>
 @{
     ViewBag.Title = "Users";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <h2>ВСЕ ИГРОКИ НА СЕРВЕРЕ</h2>
@@ -18,8 +18,8 @@
                 <p>@user.Login</p>
                 <div class="user-status">
                     <p>@user.GamerStatus</p>
-                    <a href="@Url.Action( "Users", "Home", new{id = user.Id}, null)">@(user.GamerStatus.ToString() == "Banned" ? "Разбанить" : "Забанить")</a>
-                </div>
+                    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#cont-update" href="@Url.Action( "Users", "Home", new{id = user.Id}, null)">@(user.GamerStatus.ToString() == "Banned" ? "Разбанить" : "Забанить")</a>
+                    </div>
             </div>
         }
     </div>
