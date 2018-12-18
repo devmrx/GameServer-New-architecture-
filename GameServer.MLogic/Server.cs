@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,7 @@ using GameServerData;
 using GameServerData.Model;
 using GameServerCore.MLogic.Games;
 
-
+//[assembly: InternalsVisibleTo("")]
 namespace GameServerCore.MLogic
 {
     public class Server : IServer<GameServer, Account>, IDisposable
@@ -235,7 +237,7 @@ namespace GameServerCore.MLogic
         }
 
       
-        // TODO: Доработать метоы сериализации
+    
 
         private void SerializeSessionsGames()
         {

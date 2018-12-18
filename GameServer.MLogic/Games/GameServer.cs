@@ -103,11 +103,6 @@ namespace GameServerCore.MLogic.Games {
 
         }
 
-        //public virtual string GetInfo()
-        //{
-            
-        //}
-
 
     }
 }

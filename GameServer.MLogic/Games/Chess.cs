@@ -20,8 +20,5 @@ namespace GameServerCore.MLogic.Games
 
         }
 
-        private void CreateSession() {
-
-        }
     }
 }

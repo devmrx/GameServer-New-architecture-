@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="GameServerCore.MLogic.Account">
+    <Position X="1.25" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAACAAABQAAAAAAAAAAAAAAAAAgAAQAAAAAAA=</HashCode>
+      <FileName>Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameServerCore.MLogic.Gamer">
+    <Position X="1.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Gamer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameServerCore.MLogic.LogWriter" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAQBAAAAAAAAAAgAAAEDAAAAAAAAAAA=</HashCode>
+      <FileName>LogWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameServerCore.MLogic.Server" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="2.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>wAAAAEAAAyAAAgAwQEAAFAAgGAAAQgCAIQIAAQAAIAE=</HashCode>
+      <FileName>Server.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameServerCore.MLogic.ServerConfig">
+    <Position X="4.5" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAgAEAAAAAAiAAAAACAAAAAAAAAKAA=</HashCode>
+      <FileName>ServerConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameServerCore.MLogic.ServerEmulator">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAJAAAAAAAAACAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ServerEmulator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameServerCore.MLogic.Games.GameServer">
+    <Position X="1.25" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIIAAgAgQEAQAICAQgAAgAAIAAAAAAAAAAIAA=</HashCode>
+      <FileName>Games\GameServer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameServerCore.MLogic.Games.GameSession">
+    <Position X="5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Games\GameSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GameServerCore.MLogic.IServer&lt;TGame, TGamer&gt;" Collapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAEAAACAAAgAgAAAAAAAAGAAAQgAAIAAAAQAAIAA=</HashCode>
+      <FileName>IServer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GameServerCore.MLogic.Status" Collapsed="true">
+    <Position X="1.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAgAEAAIAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Gamer.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

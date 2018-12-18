@@ -9,16 +9,10 @@ using GameServerCore.MLogic.Games;
 namespace Web_GameServer.Controllers {
     public class HomeController : Controller
     {
-
-   
-
         private IServer<GameServer, Account> server = ServerPath.Server;
 
         public ActionResult Index()
         {
-
-            //server.Start();
-
             ViewBag.IsWork = server.ServerWork;
             ViewBag.HostName = server.HostName;
             ViewBag.IP = server.Ip;
@@ -86,13 +80,6 @@ namespace Web_GameServer.Controllers {
             return Json(new { IsWork }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Feed() {
-            
-
-
-            return PartialView(server.GetAllAccounts().FirstOrDefault());
-        }
-
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
 
@@ -104,13 +91,6 @@ namespace Web_GameServer.Controllers {
 
             return PartialView();
         }
-
-        //public ActionResult Users() {
-
-
-        //    return View(server.GetAllAccounts());
-        //}
-
 
         public ActionResult Users(int? id) {
 
@@ -135,11 +115,6 @@ namespace Web_GameServer.Controllers {
 
             return PartialView(server.GetAllGames());
         }
-
-        //public ActionResult BestBook() {
-        //    Book book = db.Books.First();
-        //    return PartialView(book);
-        //}
 
     }
 }
